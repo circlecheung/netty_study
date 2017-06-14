@@ -1,0 +1,19 @@
+syntax ="proto2";
+
+package com.zhihao.miao.netty.sixthexample;
+
+option optimize_for = SPEED;
+option java_package = "com.zhihao.miao.test.protobuf";
+option java_outer_classname="GoodsInfo";
+
+message Goods{
+    required string good_id = 1;
+    optional int32 good_name = 2;
+    optional string good_price = 3;
+}
+
+message Order{
+    required string order_id = 1;
+    optional string order_state= 2;
+    optional string order_price =3;
+}

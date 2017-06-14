@@ -20,7 +20,7 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String>{
 
         channelGroup.forEach(ch -> {
             if(channel !=ch){
-                ch.writeAndFlush(channel.remoteAddress() +" 发送的消息:" +msg);
+                ch.writeAndFlush(channel.remoteAddress() +" 发送的消息:" +msg+" \n");
             }else{
                 ch.writeAndFlush(" 【自己】"+msg +" \n");
             }
@@ -41,6 +41,8 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String>{
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
         channelGroup.writeAndFlush(" 【服务器】 -" +channel.remoteAddress() +" 离开\n");
+
+        System.out.println(channelGroup.size());
         //当客户端和服务端断开连接的时候，下面的那段代码netty会自动调用，所以不需要人为的去调用它
         //channelGroup.remove(channel);
     }
