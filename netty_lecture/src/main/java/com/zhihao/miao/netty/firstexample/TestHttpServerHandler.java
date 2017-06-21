@@ -43,7 +43,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
     }
 
 
-    //管道活跃了
+    //管道活跃
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channel active");
