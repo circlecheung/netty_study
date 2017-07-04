@@ -1,0 +1,22 @@
+syntax ="proto2";
+
+package com.zhihao.miao.test.hearBeat;
+
+option optimize_for = SPEED;
+option java_package = "com.zhihao.miao.test.hearBeat";
+option java_outer_classname="MyDataInfo";
+
+message HearBeat {
+
+    //包的类型
+    enum HearBeatType {
+        //心跳包
+        HEARTBEAT = 1;
+        //数据包
+        DATA = 2;
+    }
+
+    required HearBeatType hearBeatType = 1;
+
+    optional string data = 2;
+}

@@ -16,6 +16,7 @@ message MyMessage {
 
     required DataType data_type = 1;
 
+    //oneof的意思：如果有多个可选字段，在某一个时刻只能只有一个值被设置，可以节省内存空间
     oneof dataBody {
         People people = 2;
         Dog dog = 3;

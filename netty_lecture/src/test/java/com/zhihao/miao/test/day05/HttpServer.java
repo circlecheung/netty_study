@@ -1,6 +1,5 @@
 package com.zhihao.miao.test.day05;
 
-import com.zhihao.miao.netty.firstexample.TestServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;

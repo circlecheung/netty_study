@@ -15,9 +15,13 @@ public class TestClientInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
+        //解码器，通过Google Protocol Buffers序列化框架动态的切割接收到的ByteBuf
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
+        //将接收到的二进制文件解码成具体的实例
         pipeline.addLast(new ProtobufDecoder(MyDataInfo.Person.getDefaultInstance()));
+        //Google Protocol Buffers编码器
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
+        //Google Protocol Buffers编码器
         pipeline.addLast(new ProtobufEncoder());
 
         pipeline.addLast(new TestClientHandler());

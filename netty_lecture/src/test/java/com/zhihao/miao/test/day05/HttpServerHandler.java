@@ -33,6 +33,13 @@ public class HttpServerHandler  extends SimpleChannelInboundHandler<HttpObject> 
 
             if("post".equals(methodname)){
                 responseContent.append("post反馈");
+                QueryStringDecoder decoderQuery = new QueryStringDecoder(httpRequest.uri(),false);
+                Map<String, List<String>> uriAttributes = decoderQuery.parameters();
+                for (Map.Entry<String, List<String>> attr: uriAttributes.entrySet()) {
+                    for (String attrVal: attr.getValue()) {
+                        responseContent.append(" URI: " + attr.getKey() + '=' + attrVal + "，");
+                    }
+                }
             }
 
             ByteBuf content = Unpooled.copiedBuffer(responseContent, CharsetUtil.UTF_8); //向客户端返回的内容

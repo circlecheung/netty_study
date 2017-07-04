@@ -17,7 +17,7 @@ public final class MainServer {
 
     /*是否使用https协议*/
     static final boolean SSL = System.getProperty("ssl") != null;
-    static final int PORT = Integer.parseInt(System.getProperty("port", SSL? "8443" : "6789"));
+    static final int PORT = Integer.parseInt(System.getProperty("port", SSL? "8443" : "8899"));
 
     public static void main(String[] args) throws Exception {
         // Configure SSL.
